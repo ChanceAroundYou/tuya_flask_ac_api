@@ -24,6 +24,7 @@ class AirConditioner:
         self.openapi.post(f"/v1.0/devices/{self.device_id}/commands", commands)
 
     def get_status(self):
+        self.openapi.get("/v1.0/statistics-datas-survey")
         results = self.openapi.get(f"/v1.0/devices/{self.device_id}/status")["result"]
         status = {
             item["code"]: int(item["value"]) 
